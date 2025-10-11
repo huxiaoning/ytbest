@@ -23,7 +23,7 @@ if (-not (Get-Command ffmpeg -ErrorAction SilentlyContinue))
 $format = 'bestvideo[ext=mp4][vcodec^=avc]+bestaudio[ext=m4a]/bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio/best[ext=mp4]/best'
 
 # 字幕选项 下载字幕并合并到视频
-$subtile = '--embed-subs --write-subs --write-auto-subs --convert-subs srt'
+$subtile = @('--embed-subs', '--write-subs', '--write-auto-subs', '--convert-subs', 'srt')
 
 Write-Host "🚀 正在下载最高画质视频..." -ForegroundColor Cyan
 yt-dlp --cookies-from-browser chrome $subtile -f $format -o "%(title)s.%(ext)s" $Url
