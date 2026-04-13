@@ -28,7 +28,7 @@ $cwd = $PWD.Path
 Write-Host "🚀 正在下载最高画质视频..." -ForegroundColor Cyan
 
 # %(autonumber)03d - 指定序号格式为 001 002 003 ..
-yt-dlp --yes-playlist --playlist-reverse -o "$cwd\%(playlist_title)s\%(autonumber)d.%(title)s.%(ext)s" -I "1:" --cookies-from-browser chrome --no-check-certificate --compat-options no-youtube-unavailable-videos -f best/bestvideo*+bestaudio $subtile --embed-metadata $Url
+yt-dlp --external-downloader aria2c --external-downloader-args "-x 16 -s 16 -k 1M -c" --yes-playlist --playlist-reverse -o "$cwd\%(playlist_title)s\%(autonumber)d.%(title)s.%(ext)s" -I "1:" --cookies-from-browser chrome --no-check-certificate --compat-options no-youtube-unavailable-videos -f best/bestvideo*+bestaudio $subtile --embed-metadata $Url
 
 if ($LASTEXITCODE -eq 0)
 {
