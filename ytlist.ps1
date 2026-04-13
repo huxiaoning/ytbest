@@ -36,7 +36,9 @@ if($count -lt 10){
     $prefix="%(autonumber)02d"
 } elseif ($count -lt 1000) {
     $prefix="%(autonumber)03d"
-} else {
+} elseif ($count -lt 10000) {
+     $prefix="%(autonumber)04d"
+ } else {
     $prefix="%(autonumber)s"
 }
 Write-Host "🚀 剧集前缀为：$prefix..." -ForegroundColor Cyan
