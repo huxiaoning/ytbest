@@ -26,7 +26,7 @@ $subtile = @('--embed-subs', '--write-subs', '--write-auto-subs', '--convert-sub
 $cwd = $PWD.Path
 
 Write-Host "🚀 正在下载最高画质视频..." -ForegroundColor Cyan
-yt-dlp --yes-playlist -o "$cwd\%(playlist_title)s\%(playlist_index)s.%(title)s.%(ext)s" -I "1:" --cookies-from-browser chrome --no-check-certificate --compat-options no-youtube-unavailable-videos -f best/bestvideo*+bestaudio $subtile --embed-metadata $Url
+yt-dlp --yes-playlist --playlist-sort upload_date -o "$cwd\%(playlist_title)s\%(playlist_index)s.%(title)s.%(ext)s" -I "1:" --cookies-from-browser chrome --no-check-certificate --compat-options no-youtube-unavailable-videos -f best/bestvideo*+bestaudio $subtile --embed-metadata $Url
 
 if ($LASTEXITCODE -eq 0)
 {
