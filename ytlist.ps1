@@ -26,7 +26,9 @@ $subtile = @('--embed-subs', '--write-subs', '--write-auto-subs', '--convert-sub
 $cwd = $PWD.Path
 
 Write-Host "🚀 正在下载最高画质视频..." -ForegroundColor Cyan
-yt-dlp --yes-playlist --playlist-reverse -o "$cwd\%(playlist_title)s\%(autonumber)s.%(title)s.%(ext)s" -I "1:" --cookies-from-browser chrome --no-check-certificate --compat-options no-youtube-unavailable-videos -f best/bestvideo*+bestaudio $subtile --embed-metadata $Url
+
+# %(autonumber)03d - 指定序号格式为 001 002 003 ..
+yt-dlp --yes-playlist --playlist-reverse -o "$cwd\%(playlist_title)s\%(autonumber)d.%(title)s.%(ext)s" -I "1:" --cookies-from-browser chrome --no-check-certificate --compat-options no-youtube-unavailable-videos -f best/bestvideo*+bestaudio $subtile --embed-metadata $Url
 
 if ($LASTEXITCODE -eq 0)
 {
