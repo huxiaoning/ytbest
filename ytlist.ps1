@@ -20,7 +20,7 @@ if (-not (Get-Command ffmpeg -ErrorAction SilentlyContinue))
 }
 
 # 字幕选项 下载字幕并合并到视频
-$subtile = @('--write-subs', '--write-auto-subs', '--convert-subs', 'ass')
+$subtile = @('--write-subs', '--write-auto-subs', '--sub-langs', 'en.*,zh.*', '--convert-subs', 'ass')
 
 # 脚本工作目录
 $cwd = $PWD.Path
